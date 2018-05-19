@@ -44,7 +44,7 @@ function createScene() {
 	// Position the camera
 	camera.position.x = 0;
 	camera.position.y = 150;
-	camera.position.z = 100;	
+	camera.position.z = 100;
 
 	// Create the renderer
 
@@ -103,10 +103,10 @@ function createLights(){
 	shadowLight.shadow.mapSize.height = 2048;
 
 	// Add the lights to the scene
-	scene.add(hemisphereLight);  
+	scene.add(hemisphereLight);
 
 	scene.add(shadowLight);
-}	
+}
 
 
 Land = function(){
@@ -155,7 +155,7 @@ Cloud = function(){
 	// Cube geometry and material
 	var geom = new THREE.DodecahedronGeometry(20,0);
 	var mat = new THREE.MeshPhongMaterial({
-		color:Colors.white,  
+		color:Colors.white,
 	});
 
 	var nBlocs = 3+Math.floor(Math.random()*3);
@@ -190,7 +190,7 @@ Sky = function(){
 	// Create the Clouds
 
 	for(var i=0; i<this.nClouds; i++){
-	
+
 		var c = new Cloud();
 
 		//set rotation and position using trigonometry
@@ -198,7 +198,7 @@ Sky = function(){
 		// this is the distance between the center of the axis and the cloud itself
 		var h = 800 + Math.random()*200;
 		c.mesh.position.y = Math.sin(a)*h;
-		c.mesh.position.x = Math.cos(a)*h;		
+		c.mesh.position.x = Math.cos(a)*h;
 
 		// rotate the cloud according to its position
 		c.mesh.rotation.z = a + Math.PI/2;
@@ -279,7 +279,7 @@ Flower = function () {
 	geomPetal.translate(12.5,0,3);
 
 		var petals = [];
-		for(var i=0; i<4; i++){	
+		for(var i=0; i<4; i++){
 
 			petals[i]=new THREE.Mesh(geomPetal,matPetal);
 			petals[i].rotation.z = i*Math.PI/2;
@@ -311,7 +311,7 @@ Forest = function(){
 	// Create the Trees
 
 	for(var i=0; i<this.nTrees; i++){
-	
+
 		var t = new Tree();
 
 		//set rotation and position using trigonometry
@@ -319,7 +319,7 @@ Forest = function(){
 		// this is the distance between the center of the axis and the tree itself
 		var h = 605;
 		t.mesh.position.y = Math.sin(a)*h;
-		t.mesh.position.x = Math.cos(a)*h;		
+		t.mesh.position.x = Math.cos(a)*h;
 
 		// rotate the tree according to its position
 		t.mesh.rotation.z = a + (Math.PI/2)*3;
@@ -343,14 +343,14 @@ Forest = function(){
 	var stepAngle = Math.PI*2 / this.nFlowers;
 
 
-	for(var i=0; i<this.nFlowers; i++){	
+	for(var i=0; i<this.nFlowers; i++){
 
 		var f = new Flower();
 		var a = stepAngle*i;
 
 		var h = 605;
 		f.mesh.position.y = Math.sin(a)*h;
-		f.mesh.position.x = Math.cos(a)*h;		
+		f.mesh.position.x = Math.cos(a)*h;
 
 		f.mesh.rotation.z = a + (Math.PI/2)*3;
 
@@ -365,7 +365,7 @@ Forest = function(){
 }
 
 var AirPlane = function() {
-	
+
 	this.mesh = new THREE.Object3D();
 
 	// Create the cabin
@@ -383,7 +383,7 @@ var AirPlane = function() {
 	cockpit.castShadow = true;
 	cockpit.receiveShadow = true;
 	this.mesh.add(cockpit);
-	
+
 	// Create the engine
 	var geomEngine = new THREE.BoxGeometry(20,50,50,1,1,1);
 	var matEngine = new THREE.MeshPhongMaterial({color:Colors.white, shading:THREE.FlatShading});
@@ -392,7 +392,7 @@ var AirPlane = function() {
 	engine.castShadow = true;
 	engine.receiveShadow = true;
 	this.mesh.add(engine);
-	
+
 	// Create the tail
 	var geomTailPlane = new THREE.BoxGeometry(15,20,5,1,1,1);
 	var matTailPlane = new THREE.MeshPhongMaterial({color:Colors.red, shading:THREE.FlatShading});
@@ -401,7 +401,7 @@ var AirPlane = function() {
 	tailPlane.castShadow = true;
 	tailPlane.receiveShadow = true;
 	this.mesh.add(tailPlane);
-	
+
 	// Create the wing
 	var geomSideWing = new THREE.BoxGeometry(40,4,150,1,1,1);
 	var matSideWing = new THREE.MeshPhongMaterial({color:Colors.red, shading:THREE.FlatShading});
@@ -446,7 +446,7 @@ var AirPlane = function() {
 	var geomBlade1 = new THREE.BoxGeometry(1,100,10,1,1,1);
 	var geomBlade2 = new THREE.BoxGeometry(1,10,100,1,1,1);
 	var matBlade = new THREE.MeshPhongMaterial({color:Colors.brownDark, shading:THREE.FlatShading});
-	
+
 	var blade1 = new THREE.Mesh(geomBlade1, matBlade);
 	blade1.position.set(8,0,0);
 	blade1.castShadow = true;
@@ -501,9 +501,9 @@ var AirPlane = function() {
 };
 
 var Fox = function() {
-	
+
 	this.mesh = new THREE.Object3D();
-	
+
 	var redFurMat = new THREE.MeshPhongMaterial({color:Colors.red, shading:THREE.FlatShading});
 
 	// Create the Body
@@ -512,7 +512,7 @@ var Fox = function() {
 	body.castShadow = true;
 	body.receiveShadow = true;
 	this.mesh.add(body);
-	
+
 	// Create the Chest
 	var geomChest = new THREE.BoxGeometry(50,60,70,1,1,1);
 	var chest = new THREE.Mesh(geomChest, redFurMat);
@@ -576,7 +576,7 @@ var Fox = function() {
 
 	this.mesh.add(this.head);
 
-	
+
 	// Create the tail
 	var geomTail = new THREE.BoxGeometry(80,40,40,2,1,1);
 	geomTail.vertices[4].y-=10;
@@ -671,7 +671,7 @@ function createLand(){
 function createOrbit(){
   orbit = new Orbit();
   orbit.mesh.position.y = offSet;
-  orbit.mesh.rotation.z = -Math.PI/6; 
+  orbit.mesh.rotation.z = -Math.PI/6;
   scene.add(orbit.mesh);
 }
 
@@ -681,7 +681,7 @@ function createForest(){
   scene.add(forest.mesh);
 }
 
-function createSun(){ 
+function createSun(){
 	sun = new Sun();
 	sun.mesh.scale.set(1,1,.3);
 	sun.mesh.position.set(0,-30,-850);
@@ -689,7 +689,7 @@ function createSun(){
 }
 
 
-function createPlane(){ 
+function createPlane(){
 	airplane = new AirPlane();
 	airplane.mesh.scale.set(.35,.35,.35);
 	airplane.mesh.position.set(-40,110,-250);
@@ -697,7 +697,7 @@ function createPlane(){
 	scene.add(airplane.mesh);
 }
 
-function createFox(){ 
+function createFox(){
 	fox = new Fox();
 	fox.mesh.scale.set(.35,.35,.35);
 	fox.mesh.position.set(-40,110,-250);
@@ -709,7 +709,7 @@ function updatePlane() {
 
 	var targetY = normalize(mousePos.y,-.75,.75, 50, 190);
 	var targetX = normalize(mousePos.x,-.75,.75,-100, -20);
-	
+
 	// Move the plane at each frame by adding a fraction of the remaining distance
 	airplane.mesh.position.y += (targetY-airplane.mesh.position.y)*0.1;
 
@@ -749,7 +749,7 @@ function loop(){
 function handleMouseMove (event) {
 	var tx = -1 + (event.clientX / WIDTH)*2;
 	var ty = 1 - (event.clientY / HEIGHT)*2;
-	mousePos = {x:tx, y:ty};	
+	mousePos = {x:tx, y:ty};
 }
 
 
@@ -762,9 +762,10 @@ function init(event) {
 	createLand();
 	createForest();
 	createSky();
-	//createFox();
+	// createFox();
 
 	document.addEventListener('mousemove', handleMouseMove, false);
+	document.addEventListener('touchmove', handleMouseMove, false);
 
 	loop();
 }
