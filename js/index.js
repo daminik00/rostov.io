@@ -747,10 +747,16 @@ function loop(){
 }
 
 function handleMouseMove (event) {
-	console.log(event.clientX);
-	var tx = -1 + (event.clientX / WIDTH)*2;
-	var ty = 1 - (event.clientY / HEIGHT)*2;
-	mousePos = {x:tx, y:ty};
+	console.log(event);
+	if (event.type === "mousemove") {
+		var tx = -1 + (event.clientX / WIDTH)*2;
+		var ty = 1 - (event.clientY / HEIGHT)*2;
+		mousePos = {x:tx, y:ty};
+	} else {
+		var tx = -1 + (event.pageX / WIDTH)*2;
+		var ty = 1 - (event.pageY / HEIGHT)*2;
+		mousePos = {x:tx, y:ty};
+	}
 }
 
 
