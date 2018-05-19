@@ -773,6 +773,9 @@ function init(event) {
 
 	document.addEventListener('mousemove', handleMouseMove, false);
 	document.addEventListener('touchmove', handleMouseMove, false);
+	document.body.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+	});
 
 	loop();
 }
