@@ -6,15 +6,32 @@
       <link rel="stylesheet" href="css/style.css">
 	   <link media="screen" href="demo/styles/demo.css" type="text/css" rel="stylesheet" />
      <style media="screen">
+     @import url('https://fonts.googleapis.com/css?family=Comfortaa:700|Pacifico');
        #world {
          position: fixed;
+         cursor: default;
+       }
 
+       #label {
+         position: fixed;
+         top:5%;
+         left:0;
+         right: 0;
+         height: 10%;
+         text-align: center;
+         vertical-align: middle;
+         z-index: 100000000;
+         font-family: 'Comfortaa', cursive;
+         font-size: 3em;
+         cursor: default;
        }
      </style>
 </head>
 
 <body>
-
+  <div id="label">
+    rostov.io
+  </div>
   <div id="world"></div>
   <script src='three.js'></script>
   <script  src="js/index.js"></script>
